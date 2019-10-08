@@ -18,10 +18,7 @@ class ComposerStaticInit693f9f0667c317ca6aa608a5384d2fe3
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
-        ),
-        'P' => 
-        array (
-            'PhpQuery\\' => 9,
+            'Symfony\\Component\\Dotenv\\' => 25,
         ),
         'A' => 
         array (
@@ -42,9 +39,9 @@ class ComposerStaticInit693f9f0667c317ca6aa608a5384d2fe3
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'PhpQuery\\' => 
+        'Symfony\\Component\\Dotenv\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpquery/phpquery/src',
+            0 => __DIR__ . '/..' . '/symfony/dotenv',
         ),
         'App\\' => 
         array (

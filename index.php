@@ -4,20 +4,37 @@ use App\Services\FileStore;
 use App\Services\GStore;
 use App\Services\PriceChecker;
 use App\Services\Store;
+use App\Services\TelegramBot;
 
-define( "DIR", __DIR__ );
+require_once __DIR__ . "/load.php";
 
-require __DIR__ . '/vendor/autoload.php';
+$telegram_bot = new TelegramBot();
+$store = new Store( new FileStore() );
 
-$store = new Store(new FileStore());
 
-$checker      = new PriceChecker();
-$price_silver = $checker->setMarketplace( new GStore( GStore::IPHONE1_SILVER ) )->getPrice();
-$price_green  = $checker->setMarketplace( new GStore( GStore::IPHONE1_GREEN ) )->getPrice();
+//while ( true ) {
+    $updates = $telegram_bot->getUpdates();
 
-$store->set([
-    'silver' => $price_silver,
-    'green' => $price_green
-]);
+    foreach ( $updates as $update ) {
+        $checker      = new PriceChecker();
+        $price_silver = $checker->setMarketplace( new GStore( GStore::IPHONE1_SILVER ) )->getPrice();
+        $price_green  = $checker->setMarketplace( new GStore( GStore::IPHONE1_GREEN ) )->getPrice();
+        $message = "iPhone Green: " . $price_green . " грн.\n";
+        $message .= "iPhone Silver: " . $price_silver . " грн.\n";
+        $res = $telegram_bot->sendMessage( $update->message->chat->id, $message );
+    }
+//    sleep(5);
+//}
 
-dd($store->get());
+//$store = new Store( new FileStore() );
+//
+//$checker      = new PriceChecker();
+//$price_silver = $checker->setMarketplace( new GStore( GStore::IPHONE1_SILVER ) )->getPrice();
+//$price_green  = $checker->setMarketplace( new GStore( GStore::IPHONE1_GREEN ) )->getPrice();
+//
+//$store->set( [
+//    'silver' => $price_silver,
+//    'green'  => $price_green
+//] );
+//
+//dd( $store->get() );

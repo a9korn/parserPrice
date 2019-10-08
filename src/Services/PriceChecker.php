@@ -5,7 +5,8 @@ use App\Interfaces\IMarketplace;
 
 class PriceChecker
 {
-    private $marketplace;
+    /** @var IMarketplace $marketplace */
+    protected $marketplace;
 
     public function setMarketplace( IMarketplace $marketplace )
     {

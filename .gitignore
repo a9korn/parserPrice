@@ -1,3 +1,5 @@
+/vendor
 /temp
 /.idea
 /src/store
+.env
