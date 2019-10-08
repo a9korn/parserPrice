@@ -10,4 +10,5 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
     'PhpQuery\\' => array($vendorDir . '/phpquery/phpquery/src'),
+    'App\\' => array($baseDir . '/src'),
 );

@@ -1,18 +1,15 @@
 <?php
 
-use PhpQuery\PhpQuery;
+use App\Services\GStore;
+use App\Services\PriceChecker;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$curl = new Curl\Curl();
-$content = $curl->get('https://g-store.com.ua/apple-iphone-11-pro/');
+$checker = new PriceChecker();
+$checker->setMarketplace(new GStore());
 
-$page = $content->getResponse();
-$curl->close();
+dd($checker->getPrice());
 
-
-
-dd(trim($result[1]));
 
 //file_put_contents('test.txt',$page);
 //$pq=new PhpQuery;

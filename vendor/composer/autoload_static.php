@@ -23,6 +23,10 @@ class ComposerStaticInit693f9f0667c317ca6aa608a5384d2fe3
         array (
             'PhpQuery\\' => 9,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -41,6 +45,10 @@ class ComposerStaticInit693f9f0667c317ca6aa608a5384d2fe3
         'PhpQuery\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpquery/phpquery/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
