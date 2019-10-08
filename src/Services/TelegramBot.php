@@ -10,11 +10,15 @@ class TelegramBot
     protected $url = 'https://api.telegram.org/bot<token>/METHOD_NAME';
 
     private $curl;
+    private $store;
 
     private $offset;
 
     public function __construct()
     {
+        $this->store = new Store(new FileStore());
+        $offset = $this->store->get()['offset'];
+        $this->offset = $offset;
         $this->token = getenv( 'TELEGRAM_TOKEN' );
         $this->url   = str_replace( '<token>', $this->token, $this->url );
         $this->curl  = new Curl();
@@ -40,6 +44,7 @@ class TelegramBot
 
         if(!empty($response->result)) {
             $this->offset = $response->result[count($response->result)-1]->update_id;
+            $this->store->set(['offset'=>$this->offset]);
         }
 
         return $response->result;
