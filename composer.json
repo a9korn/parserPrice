@@ -8,7 +8,8 @@
     ],
     "require": {
         "curl/curl": "^2.2",
-        "phpquery/phpquery": "^0.0.2"
+        "phpquery/phpquery": "^0.0.2",
+      "ext-json": "*"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.3"

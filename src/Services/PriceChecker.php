@@ -1,15 +1,16 @@
 <?php
 namespace App\Services;
 
-use App\Interfaces\Marketplace;
+use App\Interfaces\IMarketplace;
 
 class PriceChecker
 {
     private $marketplace;
 
-    public function setMarketplace( Marketplace $marketplace )
+    public function setMarketplace( IMarketplace $marketplace )
     {
         $this->marketplace = $marketplace;
+        return $this;
     }
 
     public function getPrice()

@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface Marketplace
+interface IMarketplace
 {
     public function getPrice();
 }
