@@ -14,16 +14,25 @@ class TelegramBot
 
     private $offset;
 
+    /**
+     * TelegramBot constructor.
+     * @throws \ErrorException
+     */
     public function __construct()
     {
-        $this->store = new Store(new FileStore());
-        $offset = $this->store->get()['offset'];
+        $this->store = new Store(new FileStore('offset.txt'));
+        $offset = $this->store->get()['offset'] ?? 0;
         $this->offset = $offset;
         $this->token = getenv( 'TELEGRAM_TOKEN' );
         $this->url   = str_replace( '<token>', $this->token, $this->url );
         $this->curl  = new Curl();
     }
 
+    /**
+     * @param $method
+     * @param array $params
+     * @return mixed
+     */
     public function query( $method, $params = [] )
     {
         $url = str_replace( 'METHOD_NAME', $method, $this->url );
@@ -36,6 +45,9 @@ class TelegramBot
         return json_decode( $content );
     }
 
+    /**
+     * @return mixed
+     */
     public function getUpdates()
     {
         $response = $this->query( 'getUpdates', [
@@ -50,6 +62,11 @@ class TelegramBot
         return $response->result;
     }
 
+    /**
+     * @param $chat_id
+     * @param $text
+     * @return mixed
+     */
     public function sendMessage( $chat_id, $text )
     {
         $response = $this->query( 'sendMessage', [

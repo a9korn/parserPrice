@@ -10,6 +10,10 @@ class FileStore implements IStore
 {
     private $fname;
 
+    /**
+     * FileStore constructor.
+     * @param null|string $fname
+     */
     public function __construct( $fname = null)
     {
         $dir = DIR . DIRECTORY_SEPARATOR . getenv('STORE');
@@ -25,11 +29,17 @@ class FileStore implements IStore
         }
     }
 
+    /**
+     * @param array $value
+     */
     public function set( array $value )
     {
         file_put_contents( $this->fname, json_encode( $value ) );
     }
 
+    /**
+     * @return array
+     */
     public function get(): array
     {
         $array = [];

@@ -4,5 +4,5 @@ namespace App\Interfaces;
 
 interface IMarketplace
 {
-    public function getPrice();
+    public function getPrice():float;
 }
