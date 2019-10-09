@@ -10,10 +10,12 @@ require_once __DIR__ . "/load.php";
 
 $telegram_bot = new TelegramBot();
 $store = new Store( new FileStore() );
+$store1 = new Store( new FileStore('store1.txt') );
 
 
 //while ( true ) {
     $updates = $telegram_bot->getUpdates();
+    $store1->set($updates);
 
     foreach ( $updates as $update ) {
         $checker      = new PriceChecker();
