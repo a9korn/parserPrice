@@ -37,20 +37,25 @@ class PriceChecker
     {
         $gstore_price_silver = $this->setMarketplace( new GStore( GStore::IPHONE11_SILVER ) )->getPrice();
         $gstore_price_green  = $this->setMarketplace( new GStore( GStore::IPHONE11_GREEN ) )->getPrice();
+        $gstore_price_gold   = $this->setMarketplace( new GStore( GStore::IPHONE11_GOLD ) )->getPrice();
 
         $buyua_price_silver = $this->setMarketplace( new BuyUa( BuyUa::IPHONE11_SILVER ) )->getPrice();
         $buyua_price_green  = $this->setMarketplace( new BuyUa( BuyUa::IPHONE11_GREEN ) )->getPrice();
+        $buyua_price_gold  = $this->setMarketplace( new BuyUa( BuyUa::IPHONE11_GOLD ) )->getPrice();
 
 
         $message = '';
-        if( $gstore_price_silver ) {
-            $message = "GStore. iPhone 11 Pro 256Gb Silver 2 SIM: " . $gstore_price_silver . " грн.\n";
-            $message .= "GStore. iPhone 11 Pro 256Gb Midnight Green 2 SIM: " . $gstore_price_green . " грн.\n";
+        if ( $gstore_price_silver ) {
+            $message = "GStore. 256Silver2SIM: " . $gstore_price_silver . " грн.\n";
+            $message .= "GStore. 256Green2SIM: " . $gstore_price_green . " грн.\n";
+            $message .= "GStore. 256Gold2SIM: " . $gstore_price_gold . " грн.\n";
         } else {
             $message = "GStore - не доступен\n";
         }
-        $message .= "BuyUa. iPhone 11 Pro 256Gb Silver 2 SIM: " . $buyua_price_silver . " грн.\n";
-        $message .= "BuyUa. iPhone 11 Pro 256Gb Midnight Green 2 SIM: " . $buyua_price_green . " грн.\n";
+
+        $message .= "BuyUa. 256Silver2SIM: " . $buyua_price_silver . " грн.\n";
+        $message .= "BuyUa. 256Green2SIM: " . $buyua_price_green . " грн.\n";
+        $message .= "BuyUa. 256Gold2SIM: " . $buyua_price_gold . " грн.\n";
 
         return $message;
     }
