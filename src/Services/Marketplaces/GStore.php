@@ -90,8 +90,11 @@ class GStore implements IMarketplace
     private function regexp( $content, $regexp )
     {
         preg_match( $regexp, $content, $result );
-        if ( !empty( $result[ 1 ] ) ) $price = (float)trim( $result[ 1 ] );
 
-        return $price ?? null;
+        if ( !empty( $result[ 1 ] ) ) {
+            $price = (float)trim( $result[ 1 ] );
+        }
+
+        return $price ?? 0;
     }
 }

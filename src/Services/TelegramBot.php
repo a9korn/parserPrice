@@ -23,7 +23,7 @@ class TelegramBot
         $this->store = new Store(new FileStore('offset.txt'));
         $offset = $this->store->get()['offset'] ?? 0;
         $this->offset = $offset;
-        $this->token = getenv( 'TELEGRAM_TOKEN' );
+        $this->token = getenv( 'TELEGRAM_BOT_TOKEN' );
         $this->url   = str_replace( '<token>', $this->token, $this->url );
         $this->curl  = new Curl();
     }
